@@ -1,0 +1,13 @@
+body {
+  width: 90vw;
+  margin: 9vh auto;
+  background-color: antiquewhite;
+  color: black;
+}
+
+#selectInputContainer {
+  display: flex;
+  gap: 3vw;
+  align-items: center;
+  justify-content: space-evenly;
+}
