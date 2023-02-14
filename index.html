@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--jQuery and Bootstrap Bundle (includes Popper [for tooltip]) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+  <!-- Style for thesis page only -->
+  <link rel="stylesheet" href="style.css">
+
+
+
+
+  <title>Custom build forum</title>
+</head>
+
+<body>
+  <div class="selectValues">
+    <h1>Custom build forum</h1>
+    <p>Please enter the values you want to be in the select element</p>
+    <form id="selectInputContainer" onsubmit="return false;" method="post" name="myForm">
+      <div>
+        <label>1st value</label>
+        <input type="text">
+      </div>
+      <div>
+        <label>2nd value</label>
+        <input type="text">
+      </div>
+      <div>
+        <label>3rd value</label>
+        <input type="text">
+      </div>
+      <div>
+        <label>4th value</label>
+        <input type="text">
+      </div>
+      <div>
+        <label>5th value</label>
+        <input type="text">
+      </div>
+      <input type="submit" value="Submit" onclick="getInputForSelect()">
+
+
+    </form>
+  </div>
+
+  <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
