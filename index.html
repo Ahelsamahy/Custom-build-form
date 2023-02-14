@@ -5,15 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!--jQuery and Bootstrap Bundle (includes Popper [for tooltip]) -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-  <!-- Style for thesis page only -->
   <link rel="stylesheet" href="style.css">
-
-
-
 
   <title>Custom build forum</title>
 </head>
@@ -22,7 +14,7 @@
   <div class="selectValues">
     <h1>Custom build forum</h1>
     <p>Please enter the values you want to be in the select element</p>
-    <form id="selectInputContainer" onsubmit="return false;" method="post" name="myForm">
+    <form id="selectInputContainer" onsubmit="return getInputForSelect();">
       <div>
         <label>1st value</label>
         <input type="text">
@@ -43,13 +35,31 @@
         <label>5th value</label>
         <input type="text">
       </div>
-      <input type="submit" value="Submit" onclick="getInputForSelect()">
-
-
+      <input type="submit" value="Submit">
     </form>
   </div>
 
+  <div id="generateTable">
+    <button id="addRowButton" onclick="duplicate()">Add new row</button>
+
+
+    <form id="addRows" onsubmit="return getInputForSelect();">
+
+      <div class="tableRow">
+        <select>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <input type="text">
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+
+  </div>
   <script type="text/javascript" src="main.js"></script>
 </body>
+<!-- add option to remove from the data -->
 
 </html>
