@@ -24,6 +24,16 @@ function addSelectChild() {
   selectParent.innerHTML = html;
 }
 
+var rowIndex = 0;
+
+function duplicate() {
+  var original = document.getElementById("tableRow");
+  var GTB = document.getElementById("generateTableButton");
+  var clone = original.cloneNode(true);
+  clone.id = "duplicatedTableRow" + rowIndex++;
+  GTB.before(clone);
+  // original.parentNode.appendChild(clone);
+
 function duplicate() {
   var clone = original.cloneNode(true);
   clone.id = "duplicatedTableRow" + i++;
