@@ -61,4 +61,22 @@ function getSelectedData() {
     Dictionary.push([selection, value]);
   }
 
+function mergeCells(Dictionary) {
+  var totals = {}
+  for (const element of Dictionary) {
+    totals[element[0]] = (totals[element[0]] || 0) + "," + element[1];
+  }
+  totals = Object.entries(totals); //make it as an array
+
+  var tableRowCount = 0;
+  //remove the first zero that is added
+  for (const bid of totals) {
+    bid[1] = bid[1].substring(2);
+    // console.log(bid[1]);
+    //count the maximum entries for each data to decide the table rows
+    if (tableRowCount < bid[1].split(",").length) {
+      tableRowCount = bid[1].split(",").length + 1;
+    }
+  }
+  createTable(totals, tableRowCount);
 }
