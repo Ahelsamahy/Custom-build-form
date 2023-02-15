@@ -12,6 +12,24 @@ body {
   justify-content: space-evenly;
 }
 
-#tableRow .deleteRowButton{
+#generateTable {
+  display: none;
+  text-align: center;
+  width: 60vw;
+  margin: 9vh auto 0 auto;
+}
+
+#addRows {
+
+  width: 60vw;
+  margin: 3vh auto 0 auto;
+}
+
+#addRows [type="submit"] {
+  margin: auto auto;
+  margin-top: 2vh;
+}
+
+#tableRow .deleteRowButton {
   display: none;
 }
