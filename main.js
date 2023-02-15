@@ -40,16 +40,25 @@ function duplicate() {
   GTB.before(clone);
   // original.parentNode.appendChild(clone);
 
-function duplicate() {
-  var clone = original.cloneNode(true);
-  clone.id = "duplicatedTableRow" + i++;
-  GTB.before(clone)
-  // original.parentNode.appendChild(clone);
 }
 
 function removeDiv(e) {
   if (e.parentNode.id != "tableRow") {
     e.parentElement.remove();
-    i--;
   }
+}
+
+function getSelectedData() {
+  var inputData = document.querySelectorAll(".newEntry");
+  console.log(inputData.length);
+  let Dictionary = [];
+  for (var x = 0; x < inputData.length; x++) {
+    let selection = inputData[x].options[inputData[x].selectedIndex].text;
+    //go one level up in the same div
+    var parent = inputData[x].parentNode;
+    //find the text input in the div and get the data in it
+    let value = parent.querySelector("[type = 'text']").value;
+    Dictionary.push([selection, value]);
+  }
+
 }
