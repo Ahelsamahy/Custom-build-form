@@ -10,6 +10,12 @@ function getInputForSelect() {
     }
   }
   console.log(selectValue);
+  if (selectValue.length > 1) {
+    document.getElementById("generateTable").style.display = "block";
+  } else {
+    alert("please at least enter two values in the values");
+  }
+  addSelectChild();
   return false;
 }
 
