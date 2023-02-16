@@ -5,18 +5,34 @@ function getInputForSelect() {
   selectValue = []
   var inputData = document.querySelectorAll("#selectInputContainer [type='text']");
   for (var i = 0; i < inputData.length; i++) {
+    //add the input to the selectValue array
     if (inputData[i].value.length > 0) {
-      selectValue.push(String(inputData[i].value))
+      if (selectValue.includes(String(inputData[i].value))) {
+        alert("please enter different values");
+        inputData[i].value = "";
+      }
+      else if (inputData[i].value.length > 20) {
+        alert("please enter less than 20 character");
+        inputData[i].value = "";
+      }
+      else {
+        selectValue.push(String(inputData[i].value))
+      }
     }
   }
+
   if (selectValue.length > 1) {
     document.getElementById("generateTable").style.display = "block";
+    addSelectChild();
   } else {
-    alert("please at least enter two values in the values");
+    alert("please at least enter two inputs in the text box");
   }
-  addSelectChild();
+
   return false;
 }
+
+//update all labels
+
 
 function addSelectChild() {
   var selectParent = document.getElementById("userPreEnteredValue");
@@ -88,7 +104,11 @@ function getSelectedData() {
       Dictionary.push([selection, value]);
     }
   }
-  mergeCells(Dictionary);
+  if (Dictionary.length == 0) {
+    alert("Please enter data to show in the table")
+  } else {
+    mergeCells(Dictionary);
+  }
 }
 
 function mergeCells(Dictionary) {
@@ -109,7 +129,6 @@ function mergeCells(Dictionary) {
   }
   createTable(totals, tableRowCount);
 }
-
 
 function createTable(Dictionary, tableRowCount) {
 
