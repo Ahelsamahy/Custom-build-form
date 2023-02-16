@@ -25,8 +25,8 @@ function getInputForSelect() {
     alert("please at least enter two inputs in the text box");
   } else {
     document.getElementById("generateTable").style.display = "block";
-    addSelectChild();
     updateAllSelect();
+    addSelectChild();
   }
 
   return false;
@@ -42,7 +42,6 @@ function updateAllSelect() {
     }
     selectParent[x].innerHTML = html;
   }
-
 }
 
 function addSelectChild() {
@@ -150,7 +149,7 @@ function createTable(Dictionary, tableRowCount) {
       header.push(Dictionary[x][0])
     }
   }
-  // Dictionary.sort((a, b) => a[0].localeCompare(b[0])); in case of showing in order
+  // Dictionary.sort((a, b) => a[0].localeCompare(b[0]));// in case of showing in order
 
   const table = document.getElementById('resultedTable');
   table.innerHTML = "";
@@ -173,7 +172,7 @@ function createTable(Dictionary, tableRowCount) {
   //fill the table from user entries
   for (let x = 0; x < header.length; x++) {
     table.rows[0].cells[x].innerHTML = header[x];
-    var entryArray = Dictionary[x][1].split(',');
+    var entryArray = Dictionary[x][1].split(",");
     for (let innerDic = 0; innerDic < entryArray.length; innerDic++) {
       table.rows[innerDic + 1].cells[x].innerHTML = entryArray[innerDic];
     }
