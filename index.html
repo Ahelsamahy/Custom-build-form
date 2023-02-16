@@ -33,7 +33,7 @@
       </div>
       <div id="selectInputActionButton">
         <button type="button" id="addInputButton" onclick="createInputData()"> Add new Input</button>
-        <button type="button" id="deleteInputButton" onclick="duplicate()"> Delete last input</button>
+        <button type="button" id="deleteInputButton" onclick="removeLastInputDiv()"> Delete last input</button>
       </div>
       <input id="updateValueButton" type="submit" value="Update value">
     </form>
@@ -46,7 +46,7 @@
         <select class="newEntry" id="userPreEnteredValue">
         </select>
         <input type="text">
-        <button class="deleteRowButton" type="button" onClick="removeDiv(this)">Delete</button>
+        <button class="deleteRowButton" type="button" onClick="removeCurrentDiv(this)">Delete</button>
       </div>
       <input id="generateTableButton" type="submit" value="Generate table" onclick="getSelectedData()">
     </form>

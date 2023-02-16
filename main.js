@@ -29,12 +29,12 @@ function addSelectChild() {
   selectParent.innerHTML = html;
 }
 
-var rowIndex = 0;
+
 var selectInputIndex = 3;
 function createInputData() {
-  if (selectInputIndex< 10) {
+  if (selectInputIndex < 10) {
     var GTB = document.getElementById("selectInputActionButton");
-    selectInputIndex++
+    selectInputIndex++;
     var elDiv = document.createElement('div');    // the container div for new input
     const newLabelInput = document.createElement("label");
     const textnode = document.createTextNode(selectInputIndex + "th value");
@@ -50,8 +50,17 @@ function createInputData() {
   } else {
     alert("you can't add more than 10 input")
   }
-  
 }
+
+function removeLastInputDiv() {
+  var e = confirm("Are you sure you want to delete this label? This action can't be undone.")
+  if (e == true) {
+    document.getElementById(selectInputIndex + "thInputRowOrder").remove();
+    selectInputIndex--;
+  }
+}
+
+var rowIndex = 0;
 function duplicate() {
   var original = document.getElementById("tableRow"); // the main one that can't be deleted
   var GTB = document.getElementById("generateTableButton");
@@ -60,7 +69,7 @@ function duplicate() {
   GTB.before(clone);
 }
 
-function removeDiv(e) {
+function removeCurrentDiv(e) {
   if (e.parentNode.id != "tableRow") {
     e.parentElement.remove();
   }
