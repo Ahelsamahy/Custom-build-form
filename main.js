@@ -46,7 +46,7 @@ function updateAllSelect() {
 }
 
 function addSelectChild() {
-  var selectParent = document.getElementById("userPreEnteredValue");
+  var selectParent = document.getElementsByClassName("newEntry")[0];
   selectParent.innerHTML = "";
   var html = "";
   for (var i = 0; i < selectValue.length; i++) {
