@@ -9,7 +9,6 @@ function getInputForSelect() {
       selectValue.push(String(inputData[i].value))
     }
   }
-  console.log(selectValue);
   if (selectValue.length > 1) {
     document.getElementById("generateTable").style.display = "block";
   } else {
@@ -33,12 +32,11 @@ function addSelectChild() {
 var rowIndex = 0;
 
 function duplicate() {
-  var original = document.getElementById("tableRow");
+  var original = document.getElementById("tableRow"); // the main one that can't be deleted
   var GTB = document.getElementById("generateTableButton");
   var clone = original.cloneNode(true);
   clone.id = "duplicatedTableRow" + rowIndex++;
   GTB.before(clone);
-  // original.parentNode.appendChild(clone);
 
 }
 
@@ -50,16 +48,19 @@ function removeDiv(e) {
 
 function getSelectedData() {
   var inputData = document.querySelectorAll(".newEntry");
-  console.log(inputData.length);
   let Dictionary = [];
   for (var x = 0; x < inputData.length; x++) {
-    let selection = inputData[x].options[inputData[x].selectedIndex].text;
+    var selection = inputData[x].options[inputData[x].selectedIndex].text;
     //go one level up in the same div
     var parent = inputData[x].parentNode;
     //find the text input in the div and get the data in it
-    let value = parent.querySelector("[type = 'text']").value;
-    Dictionary.push([selection, value]);
+    var value = parent.querySelector("[type = 'text']").value;
+    if (value.length > 0) { //to check if there is value in it
+      Dictionary.push([selection, value]);
+    }
   }
+  mergeCells(Dictionary);
+}
 
 function mergeCells(Dictionary) {
   var totals = {}
@@ -72,11 +73,51 @@ function mergeCells(Dictionary) {
   //remove the first zero that is added
   for (const bid of totals) {
     bid[1] = bid[1].substring(2);
-    // console.log(bid[1]);
     //count the maximum entries for each data to decide the table rows
     if (tableRowCount < bid[1].split(",").length) {
-      tableRowCount = bid[1].split(",").length + 1;
+      tableRowCount = bid[1].split(",").length + 1; // +1 to save a place for the header
     }
   }
   createTable(totals, tableRowCount);
 }
+
+
+function createTable(Dictionary, tableRowCount) {
+
+  //get the header title only from the dictionary
+  var header = [];
+  for (var x = 0; x < Dictionary.length; x++) {
+    if (header.includes(Dictionary[x][0]) == false) {
+      header.push(Dictionary[x][0])
+    }
+  }
+  // Dictionary.sort((a, b) => a[0].localeCompare(b[0])); in case of showing in order
+
+  const table = document.getElementById('resultedTable');
+  table.innerHTML = "";
+
+  //create empty table
+  for (let rowIndex = 0; rowIndex < tableRowCount; rowIndex++) {
+    var row = document.createElement("tr");
+    for (let colIndex = 0; colIndex < header.length; colIndex++) {
+      const cell = document.createElement('td');
+      var cellContents = document.createTextNode("0");
+      cell.appendChild(cellContents);
+      row.appendChild(cell);
+    }
+    table.appendChild(row);
+  }
+  document.body.appendChild(table);
+
+  console.log("rows = " + tableRowCount)
+
+  //fill the table from user entries
+  for (let x = 0; x < header.length; x++) {
+    table.rows[0].cells[x].innerHTML = header[x];
+    var entryArray = Dictionary[x][1].split(',');
+    for (let innerDic = 0; innerDic < entryArray.length; innerDic++) {
+      table.rows[innerDic+1].cells[x].innerHTML = entryArray[innerDic];
+    }
+  }
+}
+
