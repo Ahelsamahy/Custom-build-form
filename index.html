@@ -11,53 +11,54 @@
 </head>
 
 <body>
-  <div class="selectValues">
-    <h1>Custom build forum</h1>
-    <p>Please enter the values you want to be in the select element</p>
-    <form id="selectInputContainer" onsubmit="return getInputForSelect();">
-      <div>
-        <label>1st value</label>
-        <input type="text">
-      </div>
-      <div>
-        <label>2nd value</label>
-        <input type="text">
-      </div>
-      <div>
-        <label>3rd value</label>
-        <input type="text">
-      </div>
-      <div id="inputRowOrder">
-        <label>4th value</label>
-        <input type="text">
-      </div>
-      <div id="selectInputActionButton">
-        <button type="button" id="addInputButton" onclick="createInputData()"> Add new Input</button>
-        <button type="button" id="deleteInputButton" onclick="removeLastInputDiv()"> Delete last input</button>
-      </div>
-      <input id="updateValueButton" type="submit" value="Update value">
-    </form>
+
+  <div id="getUserInputDiv">
+    <div class="selectValues">
+      <h1>Custom build forum</h1>
+      <p>Please enter the inputs you want to be in the select element</p>
+      <form id="selectInputContainer" onsubmit="return getInputForSelect();">
+        <div>
+          <label tabindex="-1">1st Input</label>
+          <input type="text">
+        </div>
+        <div>
+          <label tabindex="-1">2nd Input</label>
+          <input type="text">
+        </div>
+        <div>
+          <label tabindex="-1">3rd Input</label>
+          <input type="text">
+        </div>
+        <div id="inputRowOrder">
+          <label>4th Input</label>
+          <input type="text">
+        </div>
+        <div id="selectInputActionButton">
+          <button type="button" id="addInputButton" onclick="createInputData()"> Add new Input</button>
+          <button type="button" id="deleteInputButton" onclick="removeLastInputDiv()"> Delete last input</button>
+        </div>
+        <input id="updateValueButton" type="submit" value="Update value">
+      </form>
+    </div>
+
+    <div id="generateTable">
+      <button id="addRowButton" onclick="duplicate()">Add new row</button>
+      <form id="addRows" onsubmit="return getInputForSelect();">
+        <div id="tableRow">
+          <select class="newEntry" id="userPreEnteredValue">
+          </select>
+          <input type="text">
+          <button tabindex="-1" class="deleteRowButton" type="button" onClick="removeCurrentDiv(this)">Delete</button>
+        </div>
+        <button id="generateTableButton" type="submit" onclick="getSelectedData()">Generate table</button>
+      </form>
+    </div>
+
   </div>
 
-  <div id="generateTable">
-    <button id="addRowButton" onclick="duplicate()">Add new row</button>
-    <form id="addRows" onsubmit="return getInputForSelect();">
-      <div id="tableRow">
-        <select class="newEntry" id="userPreEnteredValue">
-        </select>
-        <input type="text">
-        <button class="deleteRowButton" type="button" onClick="removeCurrentDiv(this)">Delete</button>
-      </div>
-      <input id="generateTableButton" type="submit" value="Generate table" onclick="getSelectedData()">
-    </form>
+  <table id="resultedTable">
 
-  </div>
-
-  <div id="resultedTableDiv">
-    <table id="resultedTable">
-
-    </table>
-  </div>
+  </table>
 </body>
 
 </html>
