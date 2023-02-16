@@ -21,18 +21,29 @@ function getInputForSelect() {
     }
   }
 
-  if (selectValue.length > 1) {
+  if (selectValue.length < 1) {
+    alert("please at least enter two inputs in the text box");
+  } else {
     document.getElementById("generateTable").style.display = "block";
     addSelectChild();
-  } else {
-    alert("please at least enter two inputs in the text box");
+    updateAllSelect();
   }
 
   return false;
 }
 
-//update all labels
+//update all labels with new input or modified one
+function updateAllSelect() {
+  var selectParent = document.getElementsByClassName("newEntry");
+  for (let x = 0; x < selectParent.length; x++) {
+    var html = "";
+    for (var i = 0; i < selectValue.length; i++) {
+      html += "<option value=" + selectValue[i] + ">" + selectValue[i] + "</option>" + "<br>";
+    }
+    selectParent[x].innerHTML = html;
+  }
 
+}
 
 function addSelectChild() {
   var selectParent = document.getElementById("userPreEnteredValue");
