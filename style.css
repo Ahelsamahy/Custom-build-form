@@ -5,6 +5,10 @@ body {
   color: black;
 }
 
+/* start of getting input from user */
+#getUserInputDiv {
+  display: flex;
+}
 
 #selectInputContainer {
   width: fit-content;
@@ -28,7 +32,7 @@ body {
   justify-content: space-evenly;
 }
 
-#selectInputContainer div:nth-child(4){
+#selectInputContainer div:nth-child(4) {
   display: none;
 }
 
@@ -45,19 +49,33 @@ body {
 #generateTable {
   display: none;
   text-align: center;
-  width: 60vw;
+  width: fit-content;
   margin: 9vh auto 0 auto;
 }
 
 #addRows {
-
-  width: 60vw;
   margin: 3vh auto 0 auto;
 }
 
+#addRows div {
+  margin: 1vh auto;
+  overflow: hidden;
+}
+
+#addRows .newEntry,
+#addRows input {
+  float: left;
+  margin-right: 1vw;
+}
+
+/* start of result part */
 #addRows [type="submit"] {
   margin: auto auto;
   margin-top: 2vh;
+}
+
+#tableRow {
+  display: block;
 }
 
 #tableRow .deleteRowButton {
@@ -66,19 +84,23 @@ body {
 
 #resultedTable {
   display: table;
-  width: 20vw;
-  margin: 3vh auto 0 auto;
-  border: 1px solid rgb(38, 0, 255);
+  margin: 5vh auto 0 auto;
+  border: 2px solid #b5b5b5;
   border-collapse: collapse;
+}
+
+#resultedTable tr:first-child {
+  font-weight: bold;
+  text-align: center;
 }
 
 #resultedTable tr {
-  border: 1px solid rgb(38, 0, 255);
+  border: 1px solid #b5b5b5;
   border-collapse: collapse;
-  /* display: table-cell; */
 }
 
 #resultedTable tr td {
-  border: 1px solid rgb(38, 0, 255);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid #b5b5b5;
   border-collapse: collapse;
 }
