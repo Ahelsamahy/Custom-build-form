@@ -1,15 +1,45 @@
 body {
-  width: 90vw;
+  width: 80vw;
   margin: 9vh auto;
   background-color: antiquewhite;
   color: black;
 }
 
+
 #selectInputContainer {
+  width: fit-content;
+  text-align: left;
+}
+
+#selectInputContainer div {
+  margin-bottom: 2vh;
+}
+
+#selectInputContainer div input {
+  float: right;
+}
+
+#selectInputContainer label {
+  padding-right: 2vh;
+}
+
+#selectInputActionButton {
   display: flex;
-  gap: 3vw;
-  align-items: center;
   justify-content: space-evenly;
+}
+
+#selectInputContainer div:nth-child(4){
+  display: none;
+}
+
+#selectInputContainer button {
+  margin-top: 2vh;
+}
+
+#selectInputContainer #updateValueButton {
+  display: block;
+  margin: auto auto;
+  margin-top: 2vh;
 }
 
 #generateTable {
@@ -32,4 +62,23 @@ body {
 
 #tableRow .deleteRowButton {
   display: none;
+}
+
+#resultedTable {
+  display: table;
+  width: 20vw;
+  margin: 3vh auto 0 auto;
+  border: 1px solid rgb(38, 0, 255);
+  border-collapse: collapse;
+}
+
+#resultedTable tr {
+  border: 1px solid rgb(38, 0, 255);
+  border-collapse: collapse;
+  /* display: table-cell; */
+}
+
+#resultedTable tr td {
+  border: 1px solid rgb(38, 0, 255);
+  border-collapse: collapse;
 }

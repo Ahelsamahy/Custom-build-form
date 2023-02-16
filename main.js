@@ -30,14 +30,34 @@ function addSelectChild() {
 }
 
 var rowIndex = 0;
+var selectInputIndex = 3;
+function createInputData() {
+  if (selectInputIndex< 10) {
+    var GTB = document.getElementById("selectInputActionButton");
+    selectInputIndex++
+    var elDiv = document.createElement('div');    // the container div for new input
+    const newLabelInput = document.createElement("label");
+    const textnode = document.createTextNode(selectInputIndex + "th value");
+    newLabelInput.appendChild(textnode);
+    elDiv.appendChild(newLabelInput);
 
+    const newTextInput = document.createElement("input");
+    newTextInput.setAttribute("type", "text");
+    elDiv.appendChild(newTextInput);
+
+    elDiv.setAttribute("id", selectInputIndex + "thInputRowOrder");
+    GTB.before(elDiv);
+  } else {
+    alert("you can't add more than 10 input")
+  }
+  
+}
 function duplicate() {
   var original = document.getElementById("tableRow"); // the main one that can't be deleted
   var GTB = document.getElementById("generateTableButton");
   var clone = original.cloneNode(true);
   clone.id = "duplicatedTableRow" + rowIndex++;
   GTB.before(clone);
-
 }
 
 function removeDiv(e) {
@@ -116,7 +136,7 @@ function createTable(Dictionary, tableRowCount) {
     table.rows[0].cells[x].innerHTML = header[x];
     var entryArray = Dictionary[x][1].split(',');
     for (let innerDic = 0; innerDic < entryArray.length; innerDic++) {
-      table.rows[innerDic+1].cells[x].innerHTML = entryArray[innerDic];
+      table.rows[innerDic + 1].cells[x].innerHTML = entryArray[innerDic];
     }
   }
 }

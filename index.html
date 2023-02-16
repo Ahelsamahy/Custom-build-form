@@ -27,15 +27,15 @@
         <label>3rd value</label>
         <input type="text">
       </div>
-      <div>
+      <div id="inputRowOrder">
         <label>4th value</label>
         <input type="text">
       </div>
-      <div>
-        <label>5th value</label>
-        <input type="text">
+      <div id="selectInputActionButton">
+        <button type="button" id="addInputButton" onclick="createInputData()"> Add new Input</button>
+        <button type="button" id="deleteInputButton" onclick="duplicate()"> Delete last input</button>
       </div>
-      <input type="submit" value="Update value">
+      <input id="updateValueButton" type="submit" value="Update value">
     </form>
   </div>
 
@@ -55,8 +55,9 @@
 
   <div id="resultedTableDiv">
     <table id="resultedTable">
-      
+
     </table>
   </div>
 </body>
+
 </html>
